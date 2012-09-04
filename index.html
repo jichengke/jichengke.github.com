@@ -1,0 +1,122 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>CUMTalk</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" rel="stylesheet" href="style.css">
+		<meta name="description" content="CUMTalk是一个在线随机配对聊天平台，类似于国外的OMEGLE" />
+		<meta name="keywords" content="随机配对聊天，矿大omegle" />
+		<meta name="Author" content="JiCK@CUMT" />
+        <script src="jquery.js"></script>
+        
+        <script src="chat.js"></script>
+    	<style type="text/css">
+       	</style>
+		 <script>
+
+		function mouseOver()
+		{
+		document.beijing.src="images/gfxm2.jpg"
+		}
+		function mouseOut()
+		{
+	    document.beijing.src="images/gfxm.jpg"
+		}
+        function init_window()
+        {
+        	$('#main').height($(window).height()-$('#header').height());
+        	$('#content').width($('#chat_window').width()-$('#disconnectwrapper').width()*2-6);
+        	
+			var space = 50;
+			if (navigator.userAgent.match(/msie\s7/i)) space = 50;
+			if (navigator.userAgent.match(/msie\s6/i)) space = 50;
+	
+        	$('#chat_window').height($(window).height()-$('#header').height()-$('#content').height()-space);
+        }
+        init_window();
+        window.onresize = init_window;
+        var lang = 
+        {
+        	send_error:'发送失败',
+        	bye:'Bye!',
+        	online_num:'在线人数：',
+        	waiting:'等待陌生人连接...',
+        	me:'<span style="color:#333">我：</span>',
+        	stranger:'<span style="color:#333">陌生人：</span>',
+        	connected:'<span style="color:orange">连接成功，快跟对方打个招呼吧！</span>对方可能来自：',
+        	disconnected:'对方已断开。',
+        	typing:'<span style="font-size:12px;color:#999">对方正在输入文字</span>',
+        	reconnect:'重新连接',
+        	download:'下载聊天记录',
+        	logining:'登录中..',
+        	logined:'登录成功',
+        	you_disconnect:'您已经断开',
+        	contact_me:'&nbsp;<a href="add.php" target="_blank">留言给设计人员</a>',
+			new_msg:'新消息来啦！'
+        };
+        var ajax_delay = 1000; //ms
+        </script>
+    </head>
+    <body scroll="no" style="background-color: #99FFCC">
+        <div id="header">
+        	<div id="header_content">
+        		<table cellpadding="0" cellspacing="0" border="0">
+        			<tr>
+        				<td><img id="logo"  src="http://www.logomaker.com/logo-images/ab39ad67b157ba00.gif" /></td>
+        				<td>
+							
+								
+						
+						</td>
+    	       			<td style="text-align:right" valign="middle">
+    	       				在线人数：<span id="online_num"></span>
+    	       			</td>
+    	       		</tr>
+    	       	</table>
+    	    </div>
+        </div> 
+        <div id="main">
+        	<div id="description">
+        		<div style="width:814px; margin:0 auto;text-align:center;">
+	        		<div style="height:400px;float:left; width:300px;">
+	        			<img alt="" name="beijing" src="images/gfxm.jpg" onmouseover="mouseOver()"  onmouseout="mouseOut()"  width="300" height="300"/>
+						<br>
+	        		</div>
+	        		
+	        		<div style="height:400px;float:left; width:230px;">
+	        			<div style="margin-top:70px;">
+	        				<img src="images/title.jpg" />
+	        			</div>
+	        			<div style="margin:20px 0;margin-bottom:40px;">
+	        				<a href="javascript:init_chat();">
+							<img src="images/start.jpg" width="257" /></a>
+	        				
+	        			
+	        			</div>
+                   
+	        		</div>
+
+        		</div>
+        		<div id="announcement">
+        			
+					<a href="http://www.renren.com/jichengke" target="_blank">By 
+					JiCK@CUMT</a>
+					
+        		</div>
+        	</div>
+        	<div id="chat" style="display:none">
+        		<div id="chat_window">
+	 			</div>
+        		<div id="chat_bottom">
+        			<div id="disconnectwrapper" onclick="disconnect()">
+        				断开
+        			</div>
+	        			<textarea id="content" ></textarea>
+        			<div id="sendwrapper" onclick="send_bt()" >
+        				发送
+        			</div>
+        		</div>
+        	</div>
+        </div>
+    </body>
+</html>
